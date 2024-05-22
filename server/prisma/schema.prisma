@@ -6,3 +6,39 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model ParsedKeyword {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  keyword   String?
+  updatedAt DateTime @updatedAt
+}
+
+model DetectedContext {
+  contextType  String?
+  contextValue Int?
+  createdAt    DateTime @default(now())
+  id           String   @id @default(cuid())
+  updatedAt    DateTime @updatedAt
+}
+
+model ParsedNumber {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model UserCommand {
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  rawInput  String?
+  timestamp DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model DetectedNumber {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  value     Int?
+}
